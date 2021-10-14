@@ -1,0 +1,96 @@
+header {
+    border: 3px solid black;
+    background-color: white;
+    display: flex;
+}
+
+.uit_logo {
+    flex: 1;
+}
+
+.tieuDe {
+    flex: 4;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 70px;
+}
+
+.menu ul {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(2, 54, 7, 1) 59%, rgba(19, 255, 0, 1) 100%);
+    line-height: 50px;
+    display: relative;
+    width: 700px;
+}
+
+.menu li {
+    display: inline-block;
+    margin-right: 50px;
+    position: relative;
+    transition: all 0s;
+}
+
+.txt {
+    color: white;
+    list-style: none;
+    text-decoration: none;
+    font-size: 20px;
+    border-right: 0.5cm solid transparent black;
+}
+
+article {
+    display: flex;
+    color: black
+}
+
+.benTrai {
+    border: 2px solid blue;
+    margin: 0 20 0 20;
+    display: inline-block;
+    border-collapse: none;
+    flex: 6;
+}
+
+.section1,
+.section2 {
+    margin: 10px 20px;
+    border: 2px solid red;
+    text-align: center;
+    display: absolute;
+}
+
+.inDam {
+    font-weight: bold;
+}
+
+.kyHieu {
+    text-align: right;
+}
+
+.chinhGiua {
+    flex: 1;
+}
+
+.benPhai {
+    flex: 3;
+    color: black;
+    border: 2px solid red;
+    background-color: #66CCCC;
+    display: inline-block;
+    text-align: center;
+    width: 50px;
+    height: 450px;
+}
+
+hr {
+    color: green;
+    border: 2px solid green;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    display: inline;
+    color: black;
+}

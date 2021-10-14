@@ -1,0 +1,35 @@
+body {
+    background-color: #FFDD99;
+}
+
+h1 {
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+table {
+    width: 450px;
+    margin: 0 auto;
+}
+
+.txt {
+    color: blue;
+}
+
+fieldset {
+    width: 50%;
+}
+
+.khung {
+    width: 30px;
+}
+
+.btn {
+    text-align: center;
+}

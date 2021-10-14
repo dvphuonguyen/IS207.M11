@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Phiếu đăng ký tham gia dự thuogwr</title>
+        <link rel="stylesheet" href="cau6.css" type="text/css">
+    </head>
+    <body>
+        <h1>Phiếu đăng ký tham gia dự thưởng</h1>
+        <form>
+            <table>
+                <tr>
+                    <td class="txt">Họ và tên</td>
+                    <td>
+                        <input type="text" placeholder="Nguyễn Văn A">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="txt">Địa chỉ</td>
+                    <td>
+                        <input type="text" placeholder="abc, xyz, jqk">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="txt">Điện thoại</td>
+                    <td>
+                        <input type="text" placeholder="09xxxxxxxx">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="txt">Phái</td>
+                    <td>
+                        <input type="radio" name="gentle" checked>
+                        <label>Nam</label>
+                        <input type="radio" name="gentle">
+                        <label>Nữ</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="txt">Sản phẩm</td>
+                    <td>
+                        <select name="products" id="products" multiple>
+                            <option selected>Iphone 11 Pro Max</option>
+                            <option>Samsung Galaxy Note 20</option>
+                            <option>Xiaomi Redmi K30 </option>
+                            <option>OPPO A53</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="txt">Số dự đoán</td>
+                    <td>
+                        <input type="number" value="5" name="quantity" min="1" max="10000">
+                    </td>
+                </tr>
+                <tr class="btn">
+                    <td colspan="2">
+                        <input type="button" value="Đăng ký">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

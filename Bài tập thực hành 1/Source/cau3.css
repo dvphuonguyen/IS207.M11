@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+}
+
+table {
+    background-color: #ADD8E6;
+}
+
+ul {
+    display: inline-block;
+    padding: 5px 10px;
+}

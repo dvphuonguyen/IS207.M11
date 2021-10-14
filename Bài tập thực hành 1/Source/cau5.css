@@ -1,0 +1,30 @@
+h1 {
+    color: #78B5D6;
+    text-align: center;
+}
+
+hr {
+    height: 2px;
+    background-color: blue;
+}
+
+form {
+    text-align: center;
+}
+
+td {
+    padding-bottom: 10px;
+}
+
+.txt {
+    text-align: left;
+    width: 550px;
+}
+
+.btn {
+    border-radius: 20px;
+}
+
+p {
+    font-style: italic;
+}

@@ -1,0 +1,42 @@
+table,
+th,
+td {
+    border: 1px solid black !important;
+    border-collapse: collapse;
+}
+
+table {
+    margin: 0 auto;
+    text-align: center;
+}
+
+td {
+    width: 90px;
+}
+
+tr:first-child,
+td:first-child {
+    background-color: #F9F3E8;
+    color: #C0524F;
+    font-weight: bold;
+}
+
+.tkweb1 {
+    background-color: #9DDA4E;
+}
+
+.tkcsdl {
+    background-color: #A4D4E1;
+}
+
+.csdl {
+    background-color: #DFA7A6;
+}
+
+.ltdt {
+    background-color: #FFC20E;
+}
+
+.hdh {
+    background-color: #709FDC;
+}

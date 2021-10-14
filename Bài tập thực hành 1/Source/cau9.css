@@ -1,0 +1,59 @@
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        a {
+            font-family: Helvetica, sans-serif;
+            font-size: 24px;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        #menu_chinh ul {
+            border: 1px solid #00008B;
+            line-height: 50px;
+            background-color: #00008B;
+            text-align: center;
+        }
+        
+        #menu_chinh li {
+            list-style-type: none;
+            display: inline-block;
+            margin-left: 100px;
+            position: relative;
+            transition: all 0s;
+        }
+        
+        #menu_chinh ul li:hover {
+            background-color: #ADFF2F;
+            /*width: 100px;*/
+        }
+        
+        #menu_phu ul {
+            font-size: 20px;
+            display: none;
+            position: absolute;
+            height: 150px;
+            width: 150px;
+        }
+        
+        #menu_phu ul li {
+            margin-left: 0 !important;
+            list-style-type: none;
+        }
+        
+        #menu_phu ul li a {
+            padding: 5px 10px;
+            font-weight: normal;
+            font-size: 16px;
+        }
+        
+        #menu_phu ul li:hover {
+            background-color: lightblue;
+        }
+        
+        #menu_chinh li:hover #menu_phu ul {
+            display: block;
+        }

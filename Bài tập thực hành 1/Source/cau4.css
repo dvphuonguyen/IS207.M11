@@ -1,0 +1,51 @@
+* {
+    background-color: #FFEDCA;
+    text-align: center;
+}
+
+body {
+    display: flex;
+}
+
+image {
+    flex: 1;
+    float: left;
+}
+
+section {
+    flex: 5;
+}
+
+h1 {
+    color: purple;
+    font-size: 55px;
+    margin: 5px 10px;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    width: 550px;
+}
+
+tr:nth-child(oven) {
+    background-color: #ffffff;
+}
+
+tr:nth-child(odd) {
+    background-color: #FFEDCA;
+}
+
+th {
+    background-color: #CC6600;
+    color: #FFFFFF;
+}
+
+td:nth-child(odd) {
+    width: 55px;
+}

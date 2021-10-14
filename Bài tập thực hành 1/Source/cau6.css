@@ -1,0 +1,27 @@
+body {
+    background-color: #FFEDCA;
+}
+
+h1 {
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+table {
+    width: 550px;
+    margin: 0 auto;
+}
+
+.txt {
+    color: blue;
+}
+
+.btn {
+    text-align: center;
+}
