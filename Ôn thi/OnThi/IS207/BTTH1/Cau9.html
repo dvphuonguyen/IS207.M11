@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Menu</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		a {
+			color: #FFD700;
+			text-decoration: none;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		
+		#menu-cha ul {
+			background-color: #00008B;
+			text-align: center;
+		}
+		
+		#menu-cha li {
+			display: inline-block;
+			width: 200px;
+			line-height: 40px;
+			position: relative;
+		}
+		
+		#menu-cha li:hover {
+			background-color: #ADFF2F;
+		}
+		
+		#menu-con {
+			display: none;
+			position: absolute;
+		}
+		
+		#menu-con li{
+			text-align: left;
+		}
+		
+		.con {
+			padding-left: 10px;
+		}
+		
+		#menu-con li:hover {
+			background-color: lightblue;
+		}
+		
+		#menu-cha li:hover #menu-con {
+			display: block;
+		}
+		
+		
+		
+		
+		
+	</style>
+</head>
+<body>
+	<div id="menu-cha">
+		<ul>
+			<li><a href="#">Trang chủ</a></li>
+			<li>
+				<a href="#">Du lịch
+					<ul id="menu-con">
+						<li><a class="con" href="#">Trong nuớc</a></li>
+						<li><a class="con"href="#">Quốc tế</a></li>
+						<li><a class="con" href="#">Tự chọn</a></li>
+					</ul>
+				</a>
+			</li>
+			<li><a href="#">Tin tức<a></li>
+			<li><a href="#">Khuyến mãi<a></li>
+			<li><a href="#">Liên hệ<a></li>
+		</ul>
+	</div>
+	
+<body>
+</html>
+
+				
+				

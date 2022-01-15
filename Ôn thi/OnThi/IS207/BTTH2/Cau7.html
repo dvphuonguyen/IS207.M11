@@ -1,0 +1,172 @@
+
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Đăng ký CV</title>
+	<style>
+		table, tr, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-spacing: 0;
+			text-align: left;
+		}
+		
+		table {
+			width: 50%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+</head>
+<body>
+	<table>
+		<colgroup>
+			<col span="1" style="width: 20%;">
+			<col span="1" style="width: 80%;">
+		</colgroup>
+		<tr>
+			<td colspan="2"><h3 style="text-align: center;">Đăng ký CV</h3></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Họ và tên</td>
+			<td><input type="text" placeholder="Nguyễn Văn A" id="inputHoTen"></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Địa chỉ</td>
+			<td><input type="text" placeholder="TPHCM" id="inputDiaChi"></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Điện thoại</td>
+			<td><input type="text" placeholder="0900000000" id="inputDienThoai"></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Email</td>
+			<td><input type="text" placeholder="ex@mail.com" id="inputEmail"></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Nghề nghiệp</td>
+			<td><input type="text" placeholder="Designer" id="inputNgheNghiep"></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Ảnh đại diện</td>
+			<td><input type="file" accept=".jpg, .jpeg, .png" id="inputAnhDaiDien"></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Kỹ năng</td>
+			<td>
+				<table style="margin-left: 5px; width: 70%;" id="inputSkill">
+					<tbody>
+						<tr>
+							<td style="font-weight: bold;">Tên kỹ năng</td>
+							<td><input type="text" placeholder="NodeJs"></td>
+						</tr>
+						<tr>
+							<td style="font-weight: bold;">Mức độ</td>
+							<td><input type="range" step="10" placeholder="NodeJs"></td>
+						</tr>
+					</tbody>
+					
+				</table>
+				<br>
+				<a id="addSkill" href="#">Thêm</a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align: center;"><input type="button" value="Đăng ký"></td>
+		</tr>		
+	</table>
+	<script>
+	
+		let imgBase64 = "";
+		
+		$('#inputAnhDaiDien').on("change", function(){
+			let fileIMG = $('#inputAnhDaiDien')[0].files[0];
+			var reader = new FileReader();
+			reader.onloadend = function() {
+				imgBase64 = reader.result;
+			}
+			reader.readAsDataURL(fileIMG);
+		});
+		
+		
+		$('#addSkill').on("click", function(){
+			$('#inputSkill').append('\
+				<tbody>\
+					<tr>\
+						<td style="font-weight: bold;">Tên kỹ năng</td>\
+						<td><input type="text" placeholder="NodeJs"></td>\
+					</tr>\
+					<tr>\
+						<td style="font-weight: bold;">Mức độ</td>\
+						<td><input type="range" step="10" placeholder="NodeJs"></td>\
+					</tr>\
+				</tbody>\
+			');
+		});
+		
+		
+		$('input[type="button"]').on("click", function(){
+			let myWindow = window.open('');
+			myWindow.document.write('\
+				<html>\
+				<head>\
+					<meta charset="UTF-8">\
+					<title>Thông tin CV</title>\
+					<style>\
+						body { max-width: max-content; margin: auto; font-family: "Roboto", sans-serif; color: #019588; padding: 10px; border: 3px solid #cfcfcf; }\
+						.infoBasic { position: relative; }\
+						.infoName { top: 260px; font-size: 25px; font-weight: bold; padding-left: 5px; position: absolute; }\
+						i { padding-right: 10px; }\
+						.infoDetail{ padding-bottom: 15px; font-size: 15px; }\
+						.detailSkill{ margin-bottom: 5px; padding-bottom: 5px; }\
+						.skills { border-radius: 15px; text-align: right; padding-top: 10px; padding-bottom: 10px; color: white; text-align: center; font-size: 15px;  }\
+						.styleSkill { width: 100%; background-color: #f1f1f1; border-radius: 15px; }\
+					</style>\
+					<link rel="preconnect" href="https://fonts.googleapis.com">\
+					<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\
+					<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">\
+					<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />\
+				</head>\
+				<body>\
+					<div class="infoBasic">\
+						<img src="'+ imgBase64 +'" height="300px;", width="300px">\
+						<div class="infoName" style="color: black;">' + $('#inputHoTen').val() + '</div>\
+					</div>\
+					<br>\
+					<div class="infoDetail">\
+						<i class="fa fa-briefcase" aria-hidden="true"></i>'+ $('#inputNgheNghiep').val() +'\
+					</div>\
+					<div class="infoDetail">\
+						<i class="fa fa-home" aria-hidden="true"></i>'+ $('#inputDiaChi').val() +'\
+					</div>\
+					<div class="infoDetail">\
+						<i class="fa fa-envelope" aria-hidden="true"></i>'+ $('#inputEmail').val() +'\
+					</div>\
+					<div class="infoDetail">\
+						<i class="fa fa-phone" aria-hidden="true"></i>'+ $('#inputDienThoai').val() +'\
+					</div>\
+					<hr><br>\
+					<div class="infoSkill">\
+						<i class="fa fa-sun-o" aria-hidden="true"></i>\
+						<b>Kỹ năng</b>\
+						<br><br>');
+				$('#inputSkill').find('tbody').each((index, tbody)=>{
+					let nameSkill = $(tbody).find('td:eq(1)').find('input').val();
+					let barSkill = $(tbody).find('td:eq(3)').find('input').val();
+					myWindow.document.write('\
+						<div class="detailSkill">\
+							<b>'+ nameSkill +'</b>\
+							<div class="styleSkill">\
+								<div style="width: '+ barSkill +'%; padding-top: 0.2em; padding-bottom: 0.2em ;width: 90%; height: 1em; background-color: #019588;" class="skills">'+ barSkill +'%</div>\
+							</div>\
+						</div>\
+					');
+				});		
+				myWindow.document.write('</div><body></html>');
+		});
+	</script>
+<body>
+</html>

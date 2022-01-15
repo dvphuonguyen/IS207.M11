@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Thời khóa biểu</title>
+	<style>
+		h1 {
+			text-align: center;
+		}
+		table {
+			margin-left: auto;
+			margin-right: auto;
+		}
+		table, tr, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-spacing: 0;
+			text-align: center;
+		}
+		td {
+			width: 100px;
+		}	
+		.title {
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Thời khóa biểu</h1>
+	<table>
+		<tr>
+			<td class="title"></td>
+			<td class="title">Thứ 2</td>
+			<td class="title">Thứ 3</td>
+			<td class="title">Thứ 4</td>
+			<td class="title">Thứ 5</td>
+			<td class="title">Thứ 6</td>
+			<td class="title">Thứ 7</td>
+			<td class="title">CN</td>
+		</tr>
+		<tr>
+			<td class="title">Tiết 1</td>
+			<td>TKWeb 1</td>
+			<td></td>
+			<td></td>
+			<td>LTĐT</td>
+			<td></td>
+			<td></td>
+			<td>TK CSDL</td>
+		</tr>
+		<tr>
+			<td class="title">Tiết 2</td>
+			<td>HĐH</td>
+			<td>TK CSDL</td>
+			<td>TKWeb 1</td>
+			<td></td>
+			<td>TKWeb 1</td>
+			<td>CSDL</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="title">Tiết 3</td>
+			<td>CSDL</td>
+			<td>LTĐT</td>
+			<td>HĐH</td>
+			<td>TK CSDL</td>
+			<td></td>
+			<td>LTĐT</td>
+			<td>TKWeb 1</td>
+		</tr>
+		<tr>
+			<td class="title">Tiết 4</td>
+			<td></td>
+			<td></td>
+			<td>CSDL</td>
+			<td></td>
+			<td>HĐH</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<script>
+		function getRandomColor(){
+			return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')
+		}
+		
+		let listCell = document.getElementsByTagName("td");
+		let dictColor = {}
+		for (let i = 0; i < listCell.length; i++){
+			if ((listCell[i].className) != "title" && listCell[i].textContent != "" && !dictColor.hasOwnProperty(listCell[i].textContent)){
+				dictColor[listCell[i].textContent] = getRandomColor();
+			}
+			if ((listCell[i].className) != "title" && listCell[i].textContent != "") {
+				listCell[i].style.backgroundColor = dictColor[listCell[i].textContent];
+			}
+		}	
+	</script>
+<body>
+</html>

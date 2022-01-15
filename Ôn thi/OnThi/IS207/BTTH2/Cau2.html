@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Thực đơn</title>
+	<style>
+		body {
+			background-color: yellow;
+		}
+		
+		table, tr, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-spacing: 0;
+			text-align: center;
+		}
+		
+		table {
+			width: 30%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.tableHeader {
+			font-weight: bold;
+			font-size: 20px;
+			color: blue;
+		}
+		
+		.radioInput {
+			text-align: left;
+		}
+		
+		.buttonSubmit {
+			border-radius: 15px;
+			margin: 5px;
+		}
+		
+		.res {
+			text-align: left;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+</head>
+<body>
+	
+	<table>
+		<colgroup>
+		   <col span="1" style="width: 20%;">
+		   <col span="1" style="width: 20%;">
+		   <col span="1" style="width: 60%;">
+		</colgroup>
+		<tr>
+			<td colspan="3">
+				<h1>Thực đơn</h1>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableHeader">Thức ăn</td>
+			<td class="tableHeader">Nước uống</td>
+			<td class="tableHeader">Thời điểm</td>
+		</tr>
+		<tr>
+			<td class="multipleInput">
+				<select id="inputThucAn" multiple>
+				  <option value="20000">Bún bò</option>
+				  <option value="18000">Hủ tiếu</option>
+				  <option value="17000">Bánh canh</option>
+				  <option value="19000">Phở bò</option>
+				  <option value="15000">Nuôi</option>
+				  <option value="12000">Bánh mì thịt</option>
+				  <option value="15000">Bánh cuốn</option>
+				</select>
+			</td>
+			<td class="multipleInput">
+				<select id="inputNuocUong" multiple>
+				  <option value="12000">Cà phê đá</option>
+				  <option value="15000">Cà phê sữa đá</option>
+				  <option value="13000">Chanh dây</option>
+				  <option value="12000">Chanh muối</option>
+				  <option value="14000">Xí muội</option>
+				  <option value="13000">Sữa tươi</option>
+				  <option value="17000">Cam vắt</option>
+				</select>
+			</td>
+			<td class="radioInput">
+				<input type="radio" id="choice_1" name="inputBuoi" value="0">
+				<label for="choice_1">Ban ngày</label>
+				<br>
+				<input type="radio" id="choice_2" name="inputBuoi" value="1">
+				<label for="choice_2">Ban đêm</label><br>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<button type="button" class="buttonSubmit" onclick="tinhTien()">Tính tiền</button>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table id="tableResult" style="display:none; background-color: #9cffff;">
+		<tr>
+			<td class="tableHeader">Các món đã dùng</td>
+			<td class="tableHeader">Tiền</td>
+		</tr>
+		<colgroup>
+		   <col span="1" style="width: 40%;">
+		   <col span="1" style="width: 20%;">
+		</colgroup>
+		<tbody id="resultCell">
+		</tbody>
+	</table>
+	
+	<script>
+		function tinhTien(){
+			if (($('#inputThucAn option:selected').get().length <= 0)
+					|| ($('#inputNuocUong option:selected').get().length <= 0)
+						|| (!$("input[name='inputBuoi']:checked").val())) {
+				alert("Thiếu input rồi kìa bro!");
+			} else {
+				$("#resultCell").empty();
+				let tongTien = 0;
+				$('select :selected').each(function() {
+					tongTien += Number($(this).val());
+					$("#resultCell").append('<tr><td class="res">'+ $(this).text() +'</td><td class="res">'+ Number($(this).val()) +'</td></tr>');
+				});
+				let inputBuoi = $("input[name='inputBuoi']:checked").val()
+				if (inputBuoi == 1) tongTien = tongTien * 1.1;
+				$("#resultCell").append('<tr><td class="res">Tổng tiền</td><td class="res">'+ tongTien +' đồng</td></tr>');
+				alert("Tổng tiền của bro là " + tongTien + " VNĐ");
+				$("#tableResult").show();
+			}
+		}
+	</script>
+<body>
+</html>

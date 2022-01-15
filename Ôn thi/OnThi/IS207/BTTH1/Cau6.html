@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Phiếu đăng ký tham gia dự thưởng</title>
+	<style>
+		body {
+			background-color: #FFEDCA;
+		}
+		table, tr, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		table {
+			margin-left: auto;
+			margin-right: auto;
+			width: 500px;
+		}
+		.property {
+			color: #2a19fd;	
+		}
+		.buttonSubmit {
+			height: 30px;
+			text-align: center;
+		}
+		h1 {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Phiếu đăng ký tham gia dự thưởng</h1>
+	<table>
+		<tr>
+			<td class="property">Họ và tên</td>
+			<td><input type="text" placeholder="Nguyễn Văn A"></td>
+		</tr>
+		<tr>
+			<td class="property">Địa chỉ</td>
+			<td><input type="text" placeholder="abc, xyz, jqk"></td>
+		</tr>
+		<tr>
+			<td class="property">Điện thoại</td>
+			<td><input type="text" placeholder="09xxxxxxxx"></td>
+		</tr>
+		<tr>
+			<td class="property">Phái</td>
+			<td>
+				<input type="radio" name="gioitinh" checked>
+				<label>Nam</label>
+				<input type="radio" name="gioitinh">
+				<label>Nữ</label>
+			</td>
+		</tr>
+		<tr>
+			<td class="property">Sản phẩm</td>
+			<td>
+				<select multiple="multiple">
+					<option selected>Iphone 11 Pro Max</option>
+					<option>Samsung Galaxy Note 20</option>
+					<option>Xiaomi Redmi K30 </option>
+					<option>OPPO A53</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="property">Số dự đoán</td>
+			<td><input type="number" value="5"></td>
+		</tr>
+		<tr class="buttonSubmit">
+			<td colspan="2"><input type="button" value="Đăng ký"></td>
+		</tr>
+	</table>
+<body>
+</html>

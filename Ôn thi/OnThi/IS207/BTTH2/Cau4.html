@@ -1,0 +1,150 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mua vé</title>
+	<style>
+		table, tr, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-spacing: 0;
+			text-align: left;
+		}
+		
+		table {
+			width: 50%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+</head>
+<body>
+	<table>
+		<colgroup>
+			<col span="1" style="width: 40%;">
+			<col span="1" style="width: 60%;">
+		</colgroup>
+		<tr>
+			<td colspan="2"><h3 style="text-align: center;">Mua vé</h3></td>
+		</tr>
+		<tr>
+			<td>Ngày chiếu</td>
+			<td><input type="date" value="2021-01-01" id="inputNgayChieu"></td>
+		</tr>
+		<tr>
+			<td>Phim</td>
+			<td>
+				<select id="inputPhim">
+				  <option selected>Yêu em bất chấp</option>
+				  <option>Tháng năm rực rỡ</option>
+				  <option>Và em sẽ đến</option>
+				  <option>Chuyện ma lúc 3 giờ sáng</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Suất chiếu</td>
+			<td>
+				<select id="inputSuatChieu">
+				  <option selected value="45000">9h – 12h</option>
+				  <option value="45000">13h – 16h</option>
+				  <option value="55000">17h – 20h</option>
+				  <option value="35000">22h – 2h</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Phòng chiếu</td>
+			<td>
+				<select id="inputPhongChieu">
+				  <option selected value="1.0">Đồng</option>
+				  <option value="1.2">Bạc</option>
+				  <option value="1.5">Vàng</option>
+				  <option value="2">Kim Cương</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Chọn chỗ ngồi</td>
+			<td>
+				<select id="inputChoNgoi" multiple>
+				  <option>Ghế 01</option>
+				  <option>Ghế 02</option>
+				  <option>Ghế 03</option>
+				  <option>Ghế 04</option>
+				  <option>Ghế 05</option>
+				  <option>Ghế 06</option>
+				  <option>Ghế 07</option>
+				  <option>Ghế 08</option>
+				</select>
+			</td>
+		</tr>	
+		<tr>
+			<td colspan="2" style="text-align: center;"><input type="button" value="Mua vé"></td>
+		</tr>		
+	</table>
+	<script>
+		$('input[type="button"]').on('click', function(e){
+			let myWindow = window.open('');
+			myWindow.document.write('\
+			<html>\
+				<head>\
+					<title>Thông tin vé</title>\
+					<style>\
+						body {margin: 20px; margin-left: auto; margin-right: auto; height: 60%; width: 30%;border: 1px solid black;}\
+						.detail_ban_con{text-align: center; font-size: 20px; font-weight: bold;}\
+						.detail_ban_con_value {text-align: center;}\
+					</style>\
+				</head>\
+				<body>\
+					<h3 style="text-align: center;">Thông tin vé</h3>\
+					<center><table style="width:80%;">\
+						<tr>\
+							<td style="text-align: left;">Khách hàng</td>\
+							<td style="text-align: right;">Nguyễn Văn A</td>\
+						</tr>\
+						<tr>\
+							<td style="text-align: left;">Ngày chiếu</td>\
+							<td style="text-align: right;">'+ $("#inputNgayChieu").val() +'</td>\
+						</tr>\
+						<tr>\
+							<td style="text-align: left;">Phim</td>\
+							<td style="text-align: right;">' + $("#inputPhim option:selected").text() + '</td>\
+						</tr>\
+						<tr>\
+							<td style="text-align: left;">Suất chiếu</td>\
+							<td style="text-align: right;">' + $("#inputSuatChieu option:selected").text() + '</td>\
+						</tr>\
+						<tr>\
+							<td style="text-align: left;">Phòng chiếu</td>\
+							<td style="text-align: right;">' + $("#inputPhongChieu option:selected").text() + '</td>\
+						</tr>\
+						<tr>\
+							<table style="width: 80%;">\
+								<tr>\
+									<td class="detail_ban_con">Ghế</td>\
+									<td class="detail_ban_con">Giá vé</td>\
+								</tr>');
+								
+			let sum = 0;
+			$('#inputChoNgoi option:selected').each(function(){
+				let sum_tmp = parseFloat($("#inputSuatChieu option:selected").val()) * parseFloat($("#inputPhongChieu option:selected").val());
+				sum += sum_tmp;
+				myWindow.document.write('<tr> <td class="detail_ban_con_value">'+ $(this).text() +'</td><td class="detail_ban_con_value">'+ sum_tmp +' đ</td></tr>');
+			});
+								
+			myWindow.document.write('<tr>\
+									<td class="detail_ban_con">Tổng tiền</td>\
+									<td class="detail_ban_con">'+ sum +' đ</td>\
+								</tr>\
+							</table>\
+						</tr>\
+					</table></center>\
+				</body>\
+			</html>');
+		});
+	</script>
+<body>
+</html>

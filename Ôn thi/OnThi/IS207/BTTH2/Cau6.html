@@ -1,0 +1,176 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Phiếu đăng ký tour du lịch</title>
+	<style>
+		body {
+			background-color: #FFDD99;
+		}
+		table, tr, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		table {
+			margin-left: auto;
+			margin-right: auto;
+			width: 500;
+		}
+		.property {
+			color: #2a19fd;	
+		}
+		.buttonSubmit {
+			height: 30px;
+			text-align: center;
+		}
+		h1 {
+			text-align: center;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+	<script src="https://momentjs.com/downloads/moment.js"></script>
+</head>
+<body>
+	<h1>Phiếu đăng ký tour du lịch</h1>
+	<table>
+		<tr>
+			<td class="property">Họ và tên khách</td>
+			<td><input type="text" placeholder="Nguyễn Văn A" id="inputTen"></td>
+		</tr>
+		<tr>
+			<td class="property">Địa chỉ</td>
+			<td><input type="text" placeholder="abc, xyz, jqk" size="40" id="inputDiaChi"></td>
+		</tr>
+		<tr>
+			<td class="property">Điện thoại</td>
+			<td><input type="text" placeholder="09xxxxxxxx" id="inputDienThoai"></td>
+		</tr>
+		<tr>
+			<td class="property">Tour</td>
+			<td>
+				<select id="inputTour">
+					<option value="10000000" selected>Hà Nội – Hạ Long – Tuần Châu</option>
+					<option value="6000000">Hà Nội – Sapa</option>
+					<option value="3000000">Đà Nẵng – Hội An</option>
+					<option value="2000000">Buôn Mê Thuộc – Kon Tum</option>
+					<option value="3500000">TP.HCM – Nha Trang</option>
+					<option value="2500000">TP.HCM – Cần Thơ – Cà Mau</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="property">
+				<fieldset style="width:300px">
+					<legend>Số lượng đoàn khách</legend>
+					<label>Người lớn</label>
+					<input type="number" id="inputSLNL" value="1" style="width: 3em">
+					<label>Trẻ em</label>
+					<input type="number" id="inputSLTE" value="0" style="width: 3em">
+				</fieldset>		
+			</td>
+		</tr>
+		<tr height="50px">
+			<td class="property">Ghi chú</td>
+			<td>
+				<textarea id="inputGhiChu" rows="4" cols="42"></textarea>
+			</td>
+		</tr>
+		<tr class="buttonSubmit">
+			<td colspan="2"><input type="button" value="Đăng ký"></td>
+		</tr>
+	</table>
+	
+	<script>
+		function getNgayGio(){
+			let ngayGio = new Date();
+			listStrThu = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
+			strThu = listStrThu[ngayGio.getDay()] + ", ";
+			strlResult = strThu + moment().format('DD/MM/YYYY, HH:mm'); 
+			return strlResult
+		}
+		
+		function formatCash(str) {
+			return str.split('').reverse().reduce((prev, next, index) => {
+				return ((index % 3) ? next : (next + '.')) + prev
+			})
+		}
+		
+		$('input[type="button"]').click(function(){
+			let sumTong = (parseInt($("#inputSLNL").val()) * parseInt($("#inputTour option:selected").val())) + (parseInt($("#inputSLTE").val()) * parseInt($("#inputTour option:selected").val() / 2));
+			let myWindow = window.open('');
+			myWindow.document.write('\
+			<html>\
+				<head>\
+					<title>Thông tin đăng ký</title>\
+					<style>\
+						body {margin: 20px; margin-left: auto; margin-right: auto; height: 50%; width: 30%;border: 1px solid black;}\
+						.detail_ban_con{text-align: center; font-size: 20px; font-weight: bold;}\
+						.detail_ban_con_value {text-align: center;}\
+					</style>\
+				</head>\
+				<body>\
+					<h3 style="text-align: center;">Thông tin đăng ký</h3>\
+					<center><table style="width:80%;">\
+						<tr>\
+							<td style="text-align: left;">Ngày đăng ký</td>\
+							<td style="text-align: right;">'+ getNgayGio() +'</td>\
+						</tr>\
+						<tr>\
+							<td style="text-align: left;">Nhân viên</td>\
+							<td style="text-align: right;">Cao Hưng Phú</td>\
+						</tr>\
+						<tr>\
+							<td style="text-align: left;">Họ tên khách</td>\
+							<td style="text-align: right;">' + $("#inputTen").val() + '</td>\
+						</tr>\
+						<tr>\
+							<td style="text-align: left;">Địa chỉ</td>\
+							<td style="text-align: right;">' + $("#inputDiaChi").val() + '</td>\
+						</tr>\
+						<tr>\
+							<td style="text-align: left;">Tour</td>\
+							<td style="text-align: right;">' + $("#inputTour option:selected").text() + '</td>\
+						</tr>\
+						<tr>\
+							<td style="text-align: left;">Ghi chú</td>\
+							<td style="text-align: right;">' + $("#inputGhiChu").val() + '</td>\
+						</tr>\
+						<tr>\
+							<td colspan="2" style="text-align: left;">Số lượng khách đoàn</td>\
+						</tr>\
+						<tr>\
+							<table style="width: 80%;">\
+								<tr>\
+									<td class="detail_ban_con"></td>\
+									<td class="detail_ban_con">SL</td>\
+									<td class="detail_ban_con">Đơn giá</td>\
+									<td class="detail_ban_con">Thành tiền</td>\
+								</tr>\
+								<tr> \
+									<td class="detail_ban_con_value">Người lớn</td> \
+									<td class="detail_ban_con_value">' + $("#inputSLNL").val() + '</td> \
+									<td class="detail_ban_con_value">' + formatCash($("#inputTour option:selected").val()) + '</td> \
+									<td class="detail_ban_con_value">'+ formatCash((parseInt($("#inputSLNL").val()) * parseInt($("#inputTour option:selected").val())).toString()) +'</td> \
+								</tr>\
+								<tr> \
+									<td class="detail_ban_con_value">Trẻ em</td> \
+									<td class="detail_ban_con_value">' + $("#inputSLTE").val() + '</td> \
+									<td class="detail_ban_con_value">' + formatCash((parseInt($("#inputTour option:selected").val()) / 2).toString()) + '</td> \
+									<td class="detail_ban_con_value">'+ formatCash((parseInt($("#inputSLTE").val()) * parseInt($("#inputTour option:selected").val() / 2)).toString()) +'</td> \
+								</tr>\
+								<tr>\
+									<td colspan="3" class="detail_ban_con">Tổng tiền</td>\
+									<td class="detail_ban_con">'+ formatCash(sumTong.toString()) +' đ</td>\
+								</tr>\
+							</table>\
+						</tr>\
+					</table></center>\
+				</body>\
+			</html>');
+		});
+
+	</script>
+<body>
+</html>

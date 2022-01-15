@@ -1,0 +1,95 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Chỉnh sửa giỏ hàng</title>
+	<style>
+		table, tr, td {
+			border: 1px double black;
+			border-spacing: 0;
+			text-align: center;
+		}
+		
+		table {
+			width: 70%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		td {
+			height: 30px;
+			font-size: 15px;
+			font-weight: bold;
+		}
+		
+		input {
+			height: 80%;
+			width: 90%;
+		}
+		
+		body {
+			background-color: #FFEDCA;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+</head>
+<body>
+	<h1 style="text-align: center">Chỉnh sửa giỏ hàng</h1>
+	<table>
+		<tr>
+			<td>Sản phẩm</td>
+			<td>Số lượng</td>
+			<td>Đơn giá</td>
+			<td>Thành tiền</td>
+			<td>Chức năng</td>
+		</tr>
+		<tbody id="sanPham">
+			<tr>
+				<td style="text-align: left;">IPhone 11 Pro Max 64GB</td>
+				<td><input type="number" value="2"></td>
+				<td><input type="number" value="31000000"></td>
+				<td style="text-align: left;"></td>
+				<td><input type="button" value="Xóa"></td>
+			</tr>
+			<tr>
+				<td style="text-align: left;">Samsung Galaxy Note 10+</td>
+				<td><input type="number" value="1"></td>
+				<td><input type="number" value="16000000"></td>
+				<td style="text-align: left;"></td>
+				<td><input type="button" value="Xóa"></td>
+			</tr>
+		</tbody>
+		<tr>
+			<td colspan="3">Tổng tiền</td>
+			<td colspan="2" id="tongTien" style="text-align: left;"></td>
+		</tr>
+	</table>
+	<script>
+		function changeValue(){
+			let sum = 0;
+			$('#sanPham').find('tr').each((index, tr)=>{
+				let tmp_sum = parseInt($(tr).find('td:eq(1)').find('input').val()) * parseInt($(tr).find('td:eq(2)').find('input').val());
+				$(tr).find('td:eq(3)').text(tmp_sum);
+				sum += tmp_sum
+			});
+			$('#tongTien').text(sum);
+		}
+	
+		$(document).ready(function () {
+			changeValue();
+		});
+		
+		
+		$('input[type="number"]').change(function(){
+			changeValue();
+		});
+		
+		$('input[type="button"]').click(function(){
+			$(this).closest('tr').remove();
+			changeValue();
+		});
+
+	</script>
+<body>
+</html>

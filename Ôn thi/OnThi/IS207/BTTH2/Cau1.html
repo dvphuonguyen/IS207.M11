@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tính tiền lương</title>
+	<style>
+		body {
+			background-color: #FFEDCA;
+		}
+		
+		table, tr, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		
+		table {
+			margin-left: auto;
+			margin-right: auto;
+			width: 500px;
+		}
+		
+		.property {
+			color: black;
+			font-size: 20px;	
+		}
+		
+		.buttonSubmit {
+			height: 30px;
+			border-radius: 15px;
+		}
+		
+		h1 {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Tính tiền lương</h1>
+	<table>
+		<tr>
+			<td class="property">Lương</td>
+			<td><input type="number" id="inputLuong"></td>
+		</tr>
+		<tr>
+			<td class="property">Hệ số lương</td>
+			<td><input type="number" step=0.1 id="inputHeSoLuong"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<center>
+					<button class="buttonSubmit" type="button" onclick="tinhLuongThang()">Tính lương tháng</button>
+				</center>
+			</td>
+		</tr>
+		<tr>
+			<td class="property">Lương tháng</td>
+			<td class="property" id="result"></td>
+		</tr>
+	</table>
+	<script>
+		function tinhLuongThang(){
+			let inputLuong = document.getElementById("inputLuong").value;
+			let inputHeSoLuong = document.getElementById("inputHeSoLuong").value;
+			let result = inputLuong * inputHeSoLuong;
+			document.getElementById("result").innerHTML = result;
+		}
+	</script>
+<body>
+</html>

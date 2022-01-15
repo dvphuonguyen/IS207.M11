@@ -1,0 +1,302 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tính tiền nhà hàng</title>
+	<style>
+		table, tr, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-spacing: 0;
+			text-align: left;
+		}
+		
+		table {
+			width: 50%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.infoHeader {
+			font-size: 14px;
+			font-weight: bold;
+			color: blue;
+		}
+		
+		.titleHeader {
+			color: #CCCC99;
+			background-color: #0033CC;
+			font-size: 12px;
+			font-weight: bold;
+		}
+		
+		.detail_ban{
+			text-align: center;
+			font-size: 15px;
+			font-weight: bold;
+		}
+		
+		.detail_ban_con{
+			text-align: center;
+			font-size: 15px;
+			font-weight: bold;
+		}
+		
+		.detail_ban_con_value {
+			text-align: center;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+	<script src="https://momentjs.com/downloads/moment.js"></script>
+</head>
+<body>
+	<table>
+		<colgroup>
+		   <col span="1" style="width: 60%;">
+		   <col span="1" style="width: 40%;">
+		</colgroup>
+		<tr class="infoHeader">
+			<td id="infoNgayGio"></td>
+			<td>Nhân viên: <span id="infoNhanVien"></span></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h3 style="text-align: center;">THỰC ĐƠN</h3>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table>
+					<colgroup>
+					   <col span="1" style="width: 30%;">
+					   <col span="1" style="width: 70%;">
+					</colgroup>
+					<tr class="titleHeader">
+						<td style="text-align: center;">Bàn</td>
+						<td style="text-align: center;">Món ăn</td>
+					</tr>
+					<tr style="height: 100px;">
+						<td style="text-align: center;">
+							<select id="inputBan">
+							  <option value="" selected disabled hidden>- Chọn bàn - </option>
+							  <option value="1">Bàn 1</option>
+							  <option value="2">Bàn 2</option>
+							  <option value="3">Bàn 3</option>
+							</select>
+						</td>
+						<td style="text-align: center;">
+							<select id="inputMonAn">
+							  <option value="" selected disabled hidden>- Chọn món ăn - </option>
+							  <option value="20000">Bún bò</option>
+							  <option value="18000">Hủ tiếu</option>
+							  <option value="17000">Bánh canh</option>
+							  <option value="19000">Phở bò</option>
+							  <option value="15000">Nuôi</option>
+							  <option value="12000">Bánh mì thịt</option>
+							  <option value="15000">Bánh cuốn</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table style="width: 80%;">
+		<tr>
+			<td class="detail_ban">Bàn 1</td>
+			<td class="detail_ban">Bàn 2</td>
+			<td class="detail_ban">Bàn 3</td>
+		</tr>
+			<td>
+				<table style="width: 80%; padding-top:0px;">
+					<tr>
+						<td class="detail_ban_con">Món</td>
+						<td class="detail_ban_con">SL</td>
+						<td class="detail_ban_con">Tiền</td>
+						<td class="detail_ban_con"></td>
+					</tr>
+					<tbody id="mon_ban_1"></tbody>
+					<tr>
+						<td class="detail_ban_con">Tổng tiền</td>
+						<td colspan="3" class="detail_ban_con" id="tong_mon_ban_1">0 đ</td>
+					</tr>
+				</table>
+				<br>
+				<center><input type="submit" id="1" name="inhoadon" value="In hóa đơn"></center>
+			</td>
+			
+			<td>
+				<table style="width: 80%;">
+					<tr>
+						<td class="detail_ban_con">Món</td>
+						<td class="detail_ban_con">SL</td>
+						<td class="detail_ban_con">Tiền</td>
+						<td class="detail_ban_con"></td>
+					</tr>
+					<tbody id="mon_ban_2"></tbody>
+					<tr>
+						<td class="detail_ban_con">Tổng tiền</td>
+						<td colspan="3" class="detail_ban_con" id="tong_mon_ban_2">0 đ</td>
+					</tr>
+				</table>
+				<br>
+				<center><input type="submit" id="2" name="inhoadon" value="In hóa đơn"></center>
+			</td>
+			
+			<td>
+				<table  style="width: 80%;">
+					<tr>
+						<td class="detail_ban_con">Món</td>
+						<td class="detail_ban_con">SL</td>
+						<td class="detail_ban_con">Tiền</td>
+						<td class="detail_ban_con"></td>
+					</tr>
+					<tbody id="mon_ban_3"></tbody>
+					<tr>
+						<td class="detail_ban_con">Tổng tiền</td>
+						<td colspan="3" class="detail_ban_con" id="tong_mon_ban_3">0 đ</td>
+					</tr>
+				</table>
+				<br>
+				<center><input type="submit" id="3" name="inhoadon" value="In hóa đơn"></center>
+			</td>
+	</table>
+	
+	<script>
+		$(document).ready(function () {
+
+			function setNgayGio(){
+				setTimeout(setNgayGio, 1000);
+				let ngayGio = new Date();
+				listStrThu = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
+				strThu = listStrThu[ngayGio.getDay()] + ", ";
+				strlResult = strThu + moment().format('DD/MM/YYYY, HH:mm'); 
+				$("#infoNgayGio").text(strlResult);
+			}
+			setNgayGio();
+			$("#infoNhanVien").text("Cao Hưng Phú");
+			
+			// Thêm
+			
+			let id_ban = "";
+			$("#inputBan").change(function() {
+				id_ban = 'mon_ban_' + $("#inputBan").val();
+			});
+			
+			$("#inputMonAn").change(function() {
+				let str_ten = $("#inputMonAn :selected").text();
+				let str_soluong = 1
+				let str_gia = $("#inputMonAn :selected").val();
+				
+				if (id_ban != "") {
+					let k = $('#' + id_ban + '>tr').length;
+					
+					let check = false;
+					let id_change_value = 0;
+					$('#' + id_ban + '>tr').each((index, tr)=>{
+						$(tr).find('td').each((index, td)=>{
+							if ($(td).text() == str_ten) {
+								check = true;
+								id_change_value = $(tr).attr('id');
+							}
+						});
+					});
+					
+					if (check == false) { 
+						$('#' + id_ban).append('<tr id="'+ k +'"> \
+												<td class="detail_ban_con_value">'+ str_ten +'</td> \
+												<td class="detail_ban_con_value">'+ str_soluong +'</td> \
+												<td class="detail_ban_con_value" value="'+ str_gia +'">'+ str_gia +'</td> \
+												<td class="detail_ban_con_value"><input type="button" value="Xóa"></td></tr>');
+					} else {
+						let sub_soluong = parseInt($('#' + id_ban + ' tr[id="'+ id_change_value +'"]').find('td:eq(1)').text()) + 1;
+						let sub_gia = parseInt(sub_soluong) * parseInt($('#' + id_ban + ' tr[id="'+ id_change_value +'"]').find('td:eq(2)').attr('value'));
+						$('#' + id_ban + ' tr[id="'+ id_change_value +'"]').find('td:eq(1)').text(sub_soluong);
+						$('#' + id_ban + ' tr[id="'+ id_change_value +'"]').find('td:eq(2)').text(sub_gia);
+					}
+					
+					
+					let id_tong = 'tong_' + id_ban;
+					let sum = 0;
+					$('#' + id_ban + '>tr').each(function(){
+						sum += parseInt($(this).find('td:eq(2)').text());
+					});
+					$('#' + id_tong).text(sum + ' đ');
+				}			
+			});
+			
+			// Xóa
+			$('tbody').on('click', 'input[type="button"]', function(e){
+				let id_ban = $(this).closest('tbody').attr('id');
+				$(this).closest('tr').remove();
+				let id_tong = 'tong_' + id_ban;
+				let sum = 0;
+				$('#' + id_ban + '>tr').each(function(){
+					sum += parseInt($(this).find('td:eq(2)').text());
+				});
+				$('#' + id_tong).text(sum + ' đ');   
+				$('#' + id_ban + '>tr').each((index, tr)=>{
+					$(tr).attr('id', index);
+				});
+			});
+			
+			// In hóa đơn
+			
+			$('input[name="inhoadon"]').on('click', function(e){
+				let myWindow = window.open('');
+				myWindow.document.write('\
+				<html>\
+					<head>\
+						<title>In Hóa Đơn</title>\
+						<style>\
+							body {margin: 20px; margin-left: auto; margin-right: auto; height: 60%; width: 30%;border: 1px solid black;}\
+							.detail_ban_con{text-align: center; font-size: 20px; font-weight: bold;}\
+							.detail_ban_con_value {text-align: center;}\
+						</style>\
+					</head>\
+					<body>\
+						<h3 style="text-align: center;">Hóa đơn</h3>\
+						<center><table style="width:80%;">\
+							<tr>\
+								<td style="text-align: left;">Ngày hóa đơn:</td>\
+								<td style="text-align: right;">'+ $("#infoNgayGio").text() +'</td>\
+							</tr>\
+							<tr>\
+								<td style="text-align: left;">Nhân viên</td>\
+								<td style="text-align: right;">'+ $("#infoNhanVien").text() +'</td>\
+							</tr>\
+							<tr>\
+								<td style="text-align: left;">Bàn</td>\
+								<td style="text-align: right;">Số '+ $(this).attr('id') +'</td>\
+							</tr>\
+							<tr>\
+								<table style="width: 80%;">\
+									<tr>\
+										<td class="detail_ban_con">Món</td>\
+										<td class="detail_ban_con">SL</td>\
+										<td class="detail_ban_con">Thành tiền</td>\
+										<td class="detail_ban_con"></td>\
+									</tr>');
+
+				myWindow.document.write($("tbody [id='mon_ban_"+ $(this).attr('id') +"']").html().replaceAll('<td class="detail_ban_con_value"><input type="button" value="Xóa"></td>', ''));
+				myWindow.document.write('\
+								<tr>\
+									<td class="detail_ban_con">Tổng tiền</td>\
+									<td colspan="3" class="detail_ban_con">'+ $('#tong_mon_ban_' + $(this).attr('id')).text() +'</td>\
+								</tr>\
+								</table>\
+							</tr>\
+						</table></center>\
+					</body>\
+				</html>');
+				
+				myWindow.document.close();
+				myWindow.focus();
+			});
+		});
+	</script>
+<body>
+
+</html>
